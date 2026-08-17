@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Work</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE RUSSIA Role Play - Animated Admin Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3366;
+            --secondary: #00f0ff;
+            --dark: #0f1020;
+            --darker: #05060b;
+            --light: #ffffff;
+            --accent: #7000ff;
+            --success: #00ff66;
+            --warning: #ffaa00;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            margin: 0;
+            padding: 20px 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border: 2px solid rgba(255, 51, 102, 0.15);
+            background: rgba(255, 51, 102, 0.02);
+            z-index: 1;
+            pointer-events: none;
+            animation: floatAnim 10s infinite linear;
+        }
+
+        @keyframes floatAnim {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(15, 16, 32, 0.9);
+            border: 2px solid var(--secondary);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+            width: 100%;
+            max-width: 750px;
+            backdrop-filter: blur(10px);
+            animation: containerPulse 4s infinite alternate;
+        }
+
+        @keyframes containerPulse {
+            0% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); }
+            100% { box-shadow: 0 0 40px rgba(255, 51, 102, 0.4); }
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 26px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            background: rgba(5, 6, 11, 0.8);
+            border: 2px solid #2a2b4a;
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.6);
+            filter: brightness(1.2);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #2a2b4a;
+            padding-bottom: 15px;
+        }
+
+        .clock-timer-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(5, 6, 11, 0.9);
+            border: 2px solid var(--secondary);
+            padding: 6px 14px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .clock-face {
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock-hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            width: 2px;
+            height: 9px;
+            background: var(--primary);
+            transform-origin: bottom center;
+            animation: clockSweep 1s linear infinite;
+        }
+
+        @keyframes clockSweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .timer-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .question-counter {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            color: #8f90af;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--light);
+            line-height: 1.5;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .options-list li {
+            margin-bottom: 14px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .options-list label {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: rgba(5, 6, 11, 0.6);
+            border: 2px solid #2a2b4a;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: normal;
+            font-size: 15px;
+            color: #d1d2e0;
+            transition: all 0.2s ease;
+        }
+
+        .options-list label:hover {
+            background: rgba(0, 240, 255, 0.08);
+            border-color: var(--secondary);
+            color: var(--light);
+            transform: translateX(5px);
+        }
+
+        .options-list input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .results-card {
+            text-align: center;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .score-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--success);
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+        }
+
+        #submission-status {
+            color: var(--secondary);
+            font-style: italic;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="floating-shape" style="top: 10%; left: 10%; width: 60px; height: 60px;"></div>
+    <div class="floating-shape" style="top: 70%; left: 80%; width: 100px; height: 100px; border-radius: 50%;"></div>
+    <div class="floating-shape" style="top: 40%; left: 85%; width: 50px; height: 50px;"></div>
+
+    <div class="container">
+        <!-- PAGE 1: Candidate Details -->
+        <div id="page-register">
+            <h1>LIVE RUSSIA Role Play</h1>
+            <h2>Administrator Test System</h2>
+            <div class="form-group">
+                <label for="ign">In game Name :</label>
+                <input type="text" id="ign" placeholder="Enter your exact IGN">
+            </div>
+            <div class="form-group">
+                <label for="adminLvl">Admin Lvl :</label>
+                <input type="text" id="adminLvl" placeholder="e.g., Trial, Lvl 1, Lvl 2">
+            </div>
+            <div class="form-group">
+                <label for="country">Country :</label>
+                <input type="text" id="country" placeholder="Enter your country">
+            </div>
+            <button id="start-btn">Start Assessment</button>
+        </div>
+
+        <!-- PAGE 2: Quiz Interface -->
+        <div id="page-quiz" class="hidden">
+            <div class="quiz-header">
+                <span class="question-counter" id="q-counter">Question 1 of 30</span>
+                <div class="clock-timer-wrapper">
+                    <div class="clock-face">
+                        <div class="clock-hand"></div>
+                    </div>
+                    <span class="timer-text" id="timer-display">45s</span>
+                </div>
+            </div>
+            <div class="question-text" id="q-text">Loading question...</div>
+            <ul class="options-list" id="options-container">
+                <!-- Options populated dynamically -->
+            </ul>
+            <button id="next-btn">Next Question</button>
+        </div>
+
+        <!-- PAGE 3: Results & Submission -->
+        <div id="page-results" class="hidden results-card">
+            <h2>Test Completed</h2>
+            <p>Your assessment details have been logged and transmitted.</p>
+            <div class="score-display" id="final-score">0 / 30</div>
+            <p id="submission-status">Finalizing secure report...</p>
+            <button id="end-interview-btn">End the interview</button>
+        </div>
+    </div>
+
+    <script>
+        const questionBank = [
+            { q: "A player receives their 3rd active warning on the server. What automated action happens to their account?", options: ["They are muted for 500 minutes.", "The account is automatically blocked for 14 days.", "They are demoted to level 1 administrator.", "They receive a permanent ban (PermBan)."], answer: 1 },
+            { q: "Which of the following describes the punishment known as a \"Kick\"?", options: ["The player cannot write in chat for a specified period.", "The player is permanently blocked from the game account.", "The player is placed in prison and cannot leave.", "The player is disconnected from the server."], answer: 3 },
+            { q: "If a player holding a faction position receives a warning, what happens automatically?", options: ["They are automatically dismissed from their faction with a temporary restriction on joining all factions.", "They are promoted to leader.", "Their faction rank remains unchanged, but they lose access to chat.", "They are automatically banned for 7 days."], answer: 0 },
+            { q: "According to Rule 1.02, who is exempt from the general server rules and governed by a separate internal policy?", options: ["Donators and VIP players", "Level 6 and 7 administrators", "Media personalities of the project", "Family leaders"], answer: 2 },
+            { q: "What is the definition of \"Mute\"?", options: ["Being unable to submit reports or questions.", "Being unable to write in chat for a specified period.", "Being disconnected from the server.", "Being restricted from joining factions."], answer: 1 },
+            { q: "What does \"Report Mute\" restrict a player from doing?", options: ["Speaking in Voice Chat", "Writing in family and faction chats", "Submitting complaints and questions through the report function", "Using the VIP chat (/v)"], answer: 2 },
+            { q: "Who has the authority to amend or adjust the general server rules?", options: ["Any trial administrator", "Faction leaders", "The responsible person (announced under the topic)", "Support agents"], answer: 2 },
+            { q: "If a player is placed in prison and cannot leave it for a specified period, what is this punishment called?", options: ["Kick", "Warn", "Jail", "PermBan"], answer: 2 },
+            { q: "What is a \"PermBan\"?", options: ["A temporary block for 14 days", "A temporary block for 30 days", "Permanent blocking of the game account (forever)", "A permanent mute on all chats"], answer: 2 },
+            { q: "Do the general server rules apply to all players on the project?", options: ["No, they only apply to players in official factions.", "Yes, regardless of their in-game status, with the exception of project media personalities.", "No, they only apply to new players under level 5.", "Yes, with zero exceptions for anyone."], answer: 1 },
+            { q: "A player is seen standing on top of casino tables and deliberately provoking law enforcement officers for entertainment. What rule are they violating and what is the punishment?", options: ["DM (DeathMatch) — Jail for 60 minutes", "NonRP behavior (Rule 2.01) — Jail for 60 minutes", "MG (MetaGaming) — Mute for 30 minutes", "SK (Spawn Kill) — Jail for 60 minutes"], answer: 1 },
+            { q: "A player deliberately blocks a major road with vehicles to create dangerous traffic situations and interfere with other players. What punishment should they receive?", options: ["Jail for 60 minutes", "Warn", "Ban for 21 days", "Mute for 30 minutes"], answer: 0 },
+            { q: "A player goes AFK and leaves the game immediately when law enforcement stops their vehicle to avoid a Role Play process. What is the correct penalty?", options: ["Mute for 30 minutes", "Jail for 30 minutes", "Jail for 60 minutes / Warn", "PermBan"], answer: 2 },
+            { q: "A player runs into a green zone during an active shootout to escape death and avoid the ongoing Role Play process. What rule have they broken?", options: ["Avoiding a Role Play process (Rule 2.02)", "MG (MetaGaming)", "DB (DriveBy)", "SK (Spawn Kill)"], answer: 0 },
+            { q: "After an IC agreement, a player receives money and immediately leaves the game to deceive the other player (OOC/IC fraud). What is the punishment?", options: ["Jail for 60 minutes", "Warn", "PermBan", "Mute for 120 minutes"], answer: 2 },
+            { q: "Under what condition can an offender's game account be unblocked after committing fraud under Rule 2.03?", options: ["If they wait 30 days.", "If the full amount of damage or stolen property is returned, subject to the deceived party's decision.", "If they pay a fine to the administration in real money.", "It can never be unblocked under any circumstances."], answer: 1 },
+            { q: "What is the penalty for draining a faction or family warehouse by taking a massive amount of unauthorized resources?", options: ["Jail for 60 minutes", "Mute for 180 minutes", "Ban for 21 days / PermBan", "Warn only"], answer: 2 },
+            { q: "What is DB (DriveBy) defined as?", options: ["Driving a vehicle faster than the speed limit in the city.", "Intentional killing or causing damage without a valid IC reason using any type of vehicle.", "Repairing a car during a gunfight.", "Parking a car in front of a hospital entrance."], answer: 1 },
+            { q: "What is an exception where DB is permitted?", options: ["During any routine police patrol.", "When chasing a player who insulted you in OOC chat.", "Within the area of the event involving the capture of a fallen family container.", "DB is never permitted under any circumstances."], answer: 2 },
+            { q: "What is SK (Spawn Kill) defined as?", options: ["Killing a player outside the city limits.", "Killing or causing damage on the territory of any organization, as well as at or near exits from closed interiors.", "Killing a player who attacked you first in self-defense.", "Damaging an unowned vehicle on the street."], answer: 1 },
+            { q: "Are shootouts between families allowed near their houses according to Rule 2.06?", options: ["No, family shootouts near houses are strictly forbidden.", "Yes, they are allowed near their houses, but not inside the house.", "Yes, they are allowed anywhere including inside the house.", "Only if an administrator gives permission."], answer: 1 },
+            { q: "A player uses OOC information in IC chat that their character could not have possibly known in-game. What rule have they broken and what is the punishment?", options: ["DM — Jail for 60 minutes", "MG (MetaGaming) — Mute for 30 minutes", "NonRP — Jail for 60 minutes", "Advertising — Mute for 120 minutes"], answer: 1 },
+            { q: "What is DM (DeathMatch) defined as?", options: ["Killing a player during a formal gang war.", "Killing or causing damage without a valid IC reason.", "Using a vehicle to run over someone at a family container event.", "Speaking in a language other than English in IC chat."], answer: 1 },
+            { q: "Is retaliatory DM allowed under Rule 2.08?", options: ["No, retaliation is never allowed.", "Yes, for self-defense (note: video evidence is mandatory if punished by administration).", "Yes, but only if approved by a senior administrator.", "Only for faction members."], answer: 1 },
+            { q: "What constitutes Mass DM (Mass DeathMatch)?", options: ["Killing 2 players without an IC reason.", "Killing or causing damage without a valid IC reason to three or more players.", "Damaging 3 vehicles in a safe zone.", "Participating in a family container capture."], answer: 1 },
+            { q: "A player discovers a server bug and exploits it to duplicate virtual currency. What punishment do they receive?", options: ["Jail for 60 minutes", "Mute for 120 minutes", "PermBan with account reset (and accomplices up to PermBan)", "Warning and a 3-day ban"], answer: 2 },
+            { q: "What is the punishment for possessing, using, or distributing third-party software (cheats)?", options: ["Jail for 60 minutes", "Ban for 15–30 days / PermBan", "Mute for 30 minutes", "Report Mute for 60 minutes"], answer: 1 },
+            { q: "A player makes a casual joke in chat hinting that they use cheats. What punishment does Rule 2.11 prescribe for hints or mentions of cheats?", options: ["No punishment if it's just a joke", "Mute for 30 minutes", "Ban for up to 7 days", "PermBan"], answer: 2 },
+            { q: "What is the penalty for intentionally harming project resources, such as the official Discord servers or forum?", options: ["Ban for 30 days", "PermBan", "Jail for 60 minutes", "Mute for 180 minutes"], answer: 1 },
+            { q: "What is the punishment for buying or selling in-game currency for real money?", options: ["Ban for 14 days", "Jail for 60 minutes", "PermBan with account reset", "Mute for 120 minutes"], answer: 2 },
+            { q: "What is the only official exception where purchasing in-game currency/valuables safely is allowed?", options: ["Through private player-to-player Discord deals", "Purchases through the official LIVE RUSSIA Community website", "Through authorized third-party reseller websites", "Direct bank transfers to project developers"], answer: 1 },
+            { q: "A player advertises an unofficial third-party Discord server and a YouTube channel in the global chat. What is the range of punishments under Rule 2.14?", options: ["Jail for 60 minutes", "Mute for 30 minutes only", "Mute for 120 minutes / Ban for 14 days / PermBan", "PermBan immediately with no other options"], answer: 2 },
+            { q: "A player falsifies screenshot evidence and distorts information in their favor to deceive an administrator on the forum. What rule and punishment apply?", options: ["MG — Mute for 30 minutes", "Misleading or deceiving the administration (Rule 2.15) — Ban for 7–14 days", "NonRP behavior — Jail for 60 minutes", "Advertising — Ban for 14 days"], answer: 1 },
+            { q: "What is the penalty for attempting to sell a game account or in-game property for real money?", options: ["Ban for 30 days", "PermBan", "Warn and account reset", "Mute for 500 minutes"], answer: 1 },
+            { q: "A police officer performs a detention and arrest completely ignoring Role Play commands and logic (NonRP arrest). What punishment should they receive?", options: ["Jail for 60 minutes", "Warn", "Ban for 7 days", "Mute for 30 minutes"], answer: 1 },
+            { q: "A player creates a family name that contains profanity and explicit insults. What is the penalty under Rule 2.19?", options: ["Mute for 60 minutes", "Ban for 7–14 days / property reset", "Jail for 60 minutes", "PermBan with no reset option"], answer: 1 },
+            { q: "A player modifies their game client files and installs a custom third-party patch. According to Rule 2.20, how is any client modification treated?", options: ["Allowed if it only improves graphics.", "Considered a violation of the rule and treated as the use of prohibited software — Ban from 21 days / Permban.", "Allowed if approved by a level 2 admin.", "Punished only with a 30-minute mute."], answer: 1 },
+            { q: "Which action is explicitly permitted when canceling animations under Rule 2.21?", options: ["Canceling animations through /anim to create desynchronization", "Canceling /healme, /usedrugs, /rem, and the firing rate", "Canceling medical bed animations during a gunfight", "Canceling reload animations with sprint bugs"], answer: 1 },
+            { q: "A faction leader uses the faction budget entirely for personal vehicle purchases. What rule has been broken and what is the punishment?", options: ["NonRP behavior — Jail for 60 minutes", "Draining factions, selling ranks, or using faction budget for personal purposes (Rule 2.22) — Ban for 14–21 days / PermBan", "DM — Warn", "MG — Mute for 30 minutes"], answer: 1 },
+            { q: "A player repeatedly kills random players without reason purely to provoke others, disrupt gameplay, and cause discomfort without participating in proper gameplay. What rule does this violate?", options: ["DM (DeathMatch) only", "Intentionally harming gameplay (Rule 2.23) — Warn / Ban for 14–21 days", "NonRP — Jail for 60 minutes", "Account sharing — PermBan"], answer: 1 },
+            { q: "A player hits an administrator's vehicle with DB and shoots at them while the administrator is actively handling a rule violation. What does Rule 2.24 state about this situation?", options: ["It is considered a valid RP situation because of gang beef.", "Hitting or shooting an administrator performing duties is no longer considered an RP situation — Jail for 60 minutes / Warn.", "The player receives a 30-minute mute.", "The administrator must ignore it and roleplay back."], answer: 1 },
+            { q: "What is the penalty for selling or exchanging property between two different project servers?", options: ["Permanent ban of both accounts", "Reset of the property involved in the exchange or its equivalent", "Mute for 180 minutes", "14-day jail sentence"], answer: 1 },
+            { q: "A player uses an air transport helicopter to intentionally crash into and cause damage to another player on foot. What are the possible punishments under Rule 2.26?", options: ["Only a verbal warning", "Jail for 60 minutes / Warn / confiscation of the aircraft", "Permanent ban immediately", "Mute for 60 minutes"], answer: 1 },
+            { q: "A player provides paid services to level up other players' game accounts for real money. What is the penalty under Rule 2.27?", options: ["Ban for 15 days", "Mute for 120 minutes", "PermBan with possible account reset", "Warning and faction dismissal"], answer: 2 },
+            { q: "Distributing personal private information (doxxing) about players or their relatives without permission results in what penalty?", options: ["Mute for 180 minutes", "Jail for 60 minutes", "Ban for 15–30 days / PermBan", "Report Mute for 60 minutes"], answer: 2 },
+            { q: "What is the officially recognized language of the server that must be used in IC chats during all Role Play situations?", options: ["Russian", "Spanish", "English", "French"], answer: 2 },
+            { q: "A player types a full sentence using uppercase letters (CapsLock) in the global IC chat. What is the standard punishment?", options: ["Jail for 60 minutes", "Mute for 30 minutes", "Warn", "Report Mute for 60 minutes"], answer: 1 },
+            { q: "A player uses direct racist and discriminatory insults against another player in chat. What is the punishment under Rule 3.03?", options: ["Mute for 30 minutes", "Mute for 60–180 minutes / Warn", "Ban for 7 days", "Jail for 60 minutes"], answer: 1 },
+            { q: "A player uses the terms \"MQ\" or \"rnq\" in chat. How does Rule 3.04 classify these terms?", options: ["As normal slang words with no punishment.", "As mentions of relatives, resulting in a Mute for 180–500 minutes / Warn.", "As advertising, resulting in a 14-day ban.", "As MetaGaming, resulting in a 30-minute mute."], answer: 1 },
+            { q: "What is defined as \"Flooding\" under Rule 3.05?", options: ["Sending one message every 5 minutes.", "Three or more repeated messages from the same player.", "Using CapsLock in a single sentence.", "Speaking English in a local chat."], answer: 1 },
+            { q: "What is the penalty for impersonating an administrator when you are not one?", options: ["Mute for 30 minutes", "Mute for 120 minutes / Ban for 7–15 days / administration blacklist", "Jail for 60 minutes", "PermBan immediately"], answer: 1 },
+            { q: "A player tricks a newcomer by typing: \"/me to pick up the wallet, enter /pay 228 5000.\" What rule have they broken and what is the punishment?", options: ["MG — Mute for 30 minutes", "Misleading project players by abusing server commands (Rule 3.09) — Mute for 180 minutes / Ban for 10–30 days / PermBan", "NonRP behavior — Jail for 60 minutes", "Advertising — Ban for 7 days"], answer: 1 },
+            { q: "A player submits a report written entirely in transliteration and CapsLock. What punishment do they receive?", options: ["Chat Mute for 30 minutes", "Report Mute for 60 minutes", "Jail for 60 minutes", "Kick from the server only"], answer: 1 },
+            { q: "What is the penalty for submitting a report that contains profanity?", options: ["Report Mute for 10 minutes", "Report Mute for 60–120 minutes", "Chat Mute for 180 minutes", "Ban for 1 day"], answer: 1 },
+            { q: "A player advertises a custom personal promo code in the faction chat. What is the penalty under Rule 3.12?", options: ["Mute for 30 minutes", "Mute for 180 minutes / Ban for 15 days", "PermBan with account reset", "Warning only"], answer: 1 },
+            { q: "Is mentioning a promo code distributed through the official project VK public page or official Discord in game chat punishable?", options: ["Yes, all promo code mentions are banned.", "No, promo codes provided by developers and distributed through official project resources are an exception and carry no punishment.", "Yes, it results in a 15-day ban.", "Only if approved by a level 5 admin first."], answer: 1 },
+            { q: "What is the penalty for political or religious propaganda, or provoking players into collective conflict and disorder in chat?", options: ["Mute for 30 minutes", "Mute for 120 minutes", "Ban for 14 days", "Jail for 60 minutes"], answer: 1 },
+            { q: "A player plays loud music and pornographic moaning sounds through Voice Chat. What rule have they violated and what is the punishment?", options: ["IC chat rules — Mute for 30 minutes", "Voice chat rules (Rule 3.14) — Mute for 30–120 minutes", "NonRP behavior — Jail for 60 minutes", "Advertising — Ban for 7 days"], answer: 1 },
+            { q: "A player directly insults another player's relatives in Voice Chat. What is the punishment under Rule 3.15?", options: ["Voice Mute for 30 minutes", "Voice Mute for 60–180 minutes / Warn", "PermBan", "Report Mute for 60 minutes"], answer: 1 },
+            { q: "Which of the following third-party resources is permitted to be advertised or mentioned under Rule 3.16 exceptions?", options: ["Unofficial rival server IPs", "Personal YouTube streaming channels for profit", "Official project resources, including the official VK community, Telegram channel, and project YouTube channel", "Third-party Discord trading markets"], answer: 2 },
+            { q: "A player engages in inappropriate behavior and provokes insults within the VIP chat (/v). What is the penalty under Rule 3.17?", options: ["Mute for 60 minutes", "Mute for 180 minutes / Warn", "Ban for 30 days", "Jail for 60 minutes"], answer: 1 },
+            { q: "What is the penalty for abusing symbols and spamming the VIP chat repeatedly with the same message format?", options: ["Mute for 60 minutes", "Mute for 180 minutes", "Warn", "Ban for 7 days"], answer: 0 },
+            { q: "A player writes in local IC chat in Russian during an active Role Play interaction instead of English. What is the penalty under Rule 3.01?", options: ["Ban for 14 days", "Jail for 60 minutes", "Verbal warning / Mute for 30 minutes", "PermBan"], answer: 2 },
+            { q: "What is the penalty range for leaking information through global chats?", options: ["Mute for 30 minutes", "Jail for 60 minutes", "Warn / Ban for 21 days / PermBan", "Report Mute for 60 minutes"], answer: 2 },
+            { q: "A player submits continuous fake support requests knowing the answers just to inflate agent statistics. What rule and punishment apply?", options: ["MG — Mute for 30 minutes", "Submitting test requests to interfere with support (Rule 2.30) — Warning / Ban for 7 days", "NonRP — Jail for 60 minutes", "Advertising — Ban for 14 days"], answer: 1 },
+            { q: "Does the server administration take responsibility for player accounts or valuables lost due to hacking or personal carelessness?", options: ["Yes, they fully refund all lost items.", "No, the server administration is not responsible for player accounts or valuables lost due to hacking, fraud, or carelessness.", "Yes, if reported within 24 hours.", "Only for VIP donors."], answer: 1 },
+            { q: "What is the penalty for transferring a game account to a third party (account sharing)?", options: ["Ban for 30 days", "Mute for 180 minutes", "PermBan", "Warning and account reset"], answer: 2 },
+            { q: "A player creates multiple alternate accounts to complete achievements, receive starting bonus currency, and transfer it all to their main account. What rule is violated and what is the punishment?", options: ["DM — Jail for 60 minutes", "Creating multiple accounts for benefits (Rule 4.04) — Ban/PermBan for main and alternate accounts", "MG — Mute for 30 minutes", "NonRP — Warn"], answer: 1 },
+            { q: "How many main accounts are players permitted to own businesses from?", options: ["Up to 3 accounts", "Only from one main account (otherwise: confiscation of business/businesses)", "Unlimited accounts if approved by a moderator", "Businesses cannot be owned by anyone"], answer: 1 },
+            { q: "A player uses a nickname that resembles an administrator's spelling by substituting the letter \"i\" with \"L\". What rule and penalty apply under Rule 4.06?", options: ["MG — Mute for 30 minutes", "Duplicating or resembling an existing player/admin nickname — Nickname change / PermBan", "NonRP — Jail for 60 minutes", "Advertising — Ban for 7 days"], answer: 1 },
+            { q: "A player engages in financial pyramids and Role Play casino scams to deceive players out of large amounts of property and accessories. What is the penalty under Rule 4.09?", options: ["Jail for 60 minutes", "Mute for 180 minutes", "PermBan", "Warn and 3-day ban"], answer: 2 },
+            { q: "A player creates a custom promo code that is not related to a referral and is designed to grant passive income. What is the punishment under Rule 4.10?", options: ["Mute for 60 minutes", "PermBan or property reset", "Jail for 60 minutes", "Warning only"], answer: 1 },
+            { q: "What is the penalty for holding unofficial contests involving in-game property or currency on third-party websites without project team approval?", options: ["Mute for 120 minutes", "Account reset / PermBan", "Jail for 60 minutes", "Warn for 14 days"], answer: 1 },
+            { q: "A player conducts an out-of-game transaction exchanging real-world services for in-game currency without approval from a level 7+ administrator. What is the penalty?", options: ["Mute for 30 minutes", "Account reset / PermBan", "Jail for 60 minutes", "Warning only"], answer: 1 },
+            { q: "What must a player's nickname strictly correspond to under Rule 4.05?", options: ["Any creative fictional gaming moniker or nickname.", "A real first and last name (otherwise: dismissal from the organization).", "A name starting with a capital letter and numbers.", "A Russian historical figure's name."], answer: 1 },
+            { q: "During a family container capture event, a player cancels a standard animation. What is the penalty under Rule 5.01?", options: ["PermBan", "Prison for 60 minutes", "Mute for 30 minutes", "Warn for 14 days"], answer: 1 },
+            { q: "Is canceling a drug or medkit animation allowed during family captures according to Rule 5.01 notes?", options: ["No, all animation cancels are forbidden.", "Yes, canceling the drug/medkit animation is allowed.", "Only if approved by the family leader.", "Only outside the capture zone."], answer: 1 },
+            { q: "A player uses the accelerated running bug while sliding during a family container event. What is the punishment?", options: ["Warn", "Prison for 60 minutes", "Ban for 7 days", "Mute for 30 minutes"], answer: 1 },
+            { q: "A player hides inside map textures or disconnects their internet to exploit vulnerabilities during a family capture. What punishment do they face?", options: ["Mute for 30 minutes", "Prison for 60 minutes / Warn", "PermBan with account reset", "Report Mute for 60 minutes"], answer: 1 },
+            { q: "A player uses a vehicle during active combat at a family container event to restore HP or avoid death. What is the penalty?", options: ["Mute for 30 minutes", "Prison for 60 minutes", "Ban for 21 days", "Warn for 14 days"], answer: 1 },
+            { q: "A player spawn-kills players near houses located completely outside the active family capture zone. What is the penalty under Rule 5.05?", options: ["Prison for 60 minutes", "Prison for 60 minutes / Warn", "PermBan", "Mute for 180 minutes"], answer: 1 },
+            { q: "A player parks their vehicle directly on top of family containers to block and interfere with crate loading. What action is taken by administration?", options: ["Mute the player for 60 minutes", "Vehicle removal / Warn (checked via parking coordinates and vehicle owner)", "Permanent account ban", "Fine the player in IC cash only"], answer: 1 },
+            { q: "What is the penalty for using fireworks during a family capture event?", options: ["Mute for 30 minutes", "Jail for 60 minutes / Warn", "PermBan", "No punishment, fireworks are allowed"], answer: 1 },
+            { q: "Are drugs and medkits allowed to be used during combat at family container events?", options: ["No, it is strictly prohibited.", "Yes, using drugs/medkits during combat is explicitly allowed.", "Only if you are inside a green zone.", "Only if you are a family leader."], answer: 1 },
+            { q: "Are rolls and canceling the firing rate by crouching and standing allowed during family container events?", options: ["No, all firing rate cancels are banned.", "Yes, using rolls and canceling the firing rate by crouching, standing, and crouching again is allowed.", "Only with sniper rifles.", "Only outside the container zone."], answer: 1 },
+            { q: "A player disconnects their internet deliberately during a family capture to gain an advantage. What is the correct administrative charge?", options: ["MG — Mute for 30 minutes", "Using vulnerabilities (Rule 5.03) — Prison for 60 minutes / Warn", "DM — Jail for 60 minutes", "Advertising — Ban for 7 days"], answer: 1 },
+            { q: "If a player parks a vehicle on containers, how do administrators verify who committed the violation?", options: ["By asking in global chat who owns the car", "Using the parking coordinates and checking the vehicle owner", "By inspecting the family warehouse balance", "By checking the player's Discord profile"], answer: 1 },
+            { q: "What is the maximum jail time for animation cancellation at family container events under Rule 5.01?", options: ["30 minutes", "60 minutes", "120 minutes", "500 minutes"], answer: 1 },
+            { q: "A player from an outside faction interferes in an active war between two gangs inside the shootout zone. What is the punishment under Rule 6.01?", options: ["Jail for 60 minutes", "Warn for 14 days", "Ban for 30 days", "Mute for 120 minutes"], answer: 1 },
+            { q: "What is the penalty for interfering with aircraft during a gang shootout?", options: ["Jail for 30 minutes", "Jail for 60 minutes / Warn for 14 days", "Aircraft confiscation only", "PermBan"], answer: 1 },
+            { q: "A gang member participates in a formal gang shootout wearing civilian clothes instead of their faction uniform. What rule and punishment apply under Rule 6.05?", options: ["NonRP — Jail for 60 minutes", "Participating in a shootout without faction clothing — Jail for 60 minutes / Warn", "DM — Warn for 14 days", "MG — Mute for 30 minutes"], answer: 1 },
+            { q: "What weapons are strictly prohibited to use during gang shootouts under Rule 6.06?", options: ["Weapons crafted through /makegun", "Weapons purchased legally in a gun store", "Weapons that cannot be crafted through /makegun or purchased in a gun store", "Pistols and shotguns"], answer: 2 },
+            { q: "A player uses map textures to hide and gain an unfair advantage during a gang shootout. What is the penalty under Rule 6.07?", options: ["Jail for 60 minutes", "Warn for 14 days / Ban for up to 14 days", "PermBan with account reset", "Mute for 180 minutes"], answer: 1 },
+            { q: "A player intentionally shoots at gang vehicles traveling toward the shootout location to disrupt them. What rule is violated?", options: ["DB (DriveBy)", "Intentionally interfering during a shootout (Rule 6.08) — Jail for 60 minutes / Warn", "SK (Spawn Kill)", "MG (MetaGaming)"], answer: 1 },
+            { q: "A player wears custom skin accessories and roller skates that provide unfair stat buffs during a gang shootout. What is the penalty under Rule 6.09?", options: ["Jail for 60 minutes", "Warn for 14 days / warning to the leader", "Mute for 30 minutes", "Ban for 30 days"], answer: 1 },
+            { q: "What is the penalty for using any vehicle inside the shootout zone during an active gang shootout?", options: ["Jail for 60 minutes", "Warn for 14 days", "PermBan", "No penalty, vehicles are allowed"], answer: 0 },
+            { q: "Is using fireworks permitted during gang shootouts under Rule 6.11?", options: ["Yes, anywhere on the map.", "No, using fireworks is strictly prohibited — Jail for 60 minutes.", "Only if both gang leaders agree.", "Only after the shootout ends."], answer: 1 },
+            { q: "During a gang shootout, are players allowed to cancel the firing rate and use rolls?", options: ["No, all firing cancels are banned.", "Yes, canceling the firing rate and using rolls are explicitly allowed during gang shootouts.", "Only if approved by an admin.", "Only when using sniper rifles."], answer: 1 },
+            { q: "Can players from outside factions assist or interfere in a war between two gangs inside the shootout zone?", options: ["Yes, if they are friends with one gang.", "No, any assistance from other players or factions is strictly prohibited.", "Yes, if authorized by a family leader.", "Only with sniper support from afar."], answer: 1 },
+            { q: "What is the penalty for using the accelerated running bug while sliding during a gang shootout?", options: ["Warn for 14 days", "Prison for 60 minutes", "Ban for 7 days", "Mute for 60 minutes"], answer: 1 }
+        ];
+
+        let candidate = { ign: '', adminLvl: '', country: '', startIp: 'Fetching...', endIp: '' };
+        let quizQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let timer = null;
+        let timeLeft = 45;
+        let detailedResults = [];
+
+        const botToken = "8956059752:AAHirFOFbDnCMyZu5lbuDxCMeXItYcn2Wps";
+        const chatId = "5599632633";
+
+        async function fetchClientIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                candidate.startIp = data.ip;
+                candidate.endIp = data.ip;
+            } catch (e) {
+                candidate.startIp = "Unavailable";
+                candidate.endIp = "Unavailable";
+            }
+        }
+        fetchClientIP();
+
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        document.getElementById('start-btn').addEventListener('click', () => {
+            const ign = document.getElementById('ign').value.trim();
+            const adminLvl = document.getElementById('adminLvl').value.trim();
+            const country = document.getElementById('country').value.trim();
+
+            if (!ign || !adminLvl || !country) {
+                alert('Please fill in all details before starting.');
+                return;
+            }
+
+            candidate.ign = ign;
+            candidate.adminLvl = adminLvl;
+            candidate.country = country;
+
+            sendStartTelegramReport();
+
+            let fullyShuffledBank = shuffle([...questionBank]);
+            quizQuestions = fullyShuffledBank.slice(0, 30);
+
+            document.getElementById('page-register').classList.add('hidden');
+            document.getElementById('page-quiz').classList.remove('hidden');
+
+            loadQuestion();
+        });
+
+        function sendTelegramChunked(textMessage, callback) {
+            const MAX_LENGTH = 4000;
+            let chunks = [];
+            
+            for (let i = 0; i < textMessage.length; i += MAX_LENGTH) {
+                chunks.push(textMessage.substring(i, i + MAX_LENGTH));
+            }
+
+            let index = 0;
+            function sendNext() {
+                if (index >= chunks.length) {
+                    if (callback) callback(true);
+                    return;
+                }
+
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                const payload = {
+                    chat_id: chatId,
+                    text: chunks[index]
+                };
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(async res => {
+                    const data = await res.json();
+                    if (res.ok && data.ok) {
+                        index++;
+                        setTimeout(sendNext, 400);
+                    } else {
+                        sendViaProxyChunked(chunks[index], () => {
+                            index++;
+                            setTimeout(sendNext, 400);
+                        });
+                    }
+                })
+                .catch(err => {
+                    sendViaProxyChunked(chunks[index], () => {
+                        index++;
+                        setTimeout(sendNext, 400);
+                    });
+                });
+            }
+
+            sendNext();
+        }
+
+        function sendViaProxyChunked(textChunk, nextCallback) {
+            const proxyUrl = `https://api.allorigins.win/raw?url=` + encodeURIComponent(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(textChunk));
+            fetch(proxyUrl)
+            .then(() => {
+                if (nextCallback) nextCallback();
+            })
+            .catch(() => {
+                if (nextCallback) nextCallback();
+            });
+        }
+
+        function sendStartTelegramReport() {
+            const startMessage = `🚀 TEST STARTED - LIVE RUSSIA\n\n` +
+                `IGN: ${candidate.ign}\n` +
+                `Admin Lvl: ${candidate.adminLvl}\n` +
+                `Country: ${candidate.country}\n` +
+                `Start IP Address: ${candidate.startIp}\n` +
+                `Time: ${new Date().toLocaleString()}`;
+
+            sendTelegramChunked(startMessage);
+        }
+
+        let currentOptionPairs = [];
+
+        function loadQuestion() {
+            clearInterval(timer);
+            timeLeft = 45;
+            document.getElementById('timer-display').innerText = `${timeLeft}s`;
+
+            if (currentIndex >= quizQuestions.length) {
+                finishQuiz();
+                return;
+            }
+
+            const currentQ = quizQuestions[currentIndex];
+            document.getElementById('q-counter').innerText = `Question ${currentIndex + 1} of 30`;
+            document.getElementById('q-text').innerText = currentQ.q;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            currentOptionPairs = currentQ.options.map((opt, idx) => ({
+                text: opt,
+                isCorrect: idx === currentQ.answer
+            }));
+
+            currentOptionPairs = shuffle(currentOptionPairs);
+
+            currentOptionPairs.forEach((pair, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <label>
+                        <input type="radio" name="quiz-option" value="${index}">
+                        <span>${pair.text}</span>
+                    </label>
+                `;
+                optionsContainer.appendChild(li);
+            });
+
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer-display').innerText = `${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    processAnswer("UNATTENDED");
+                }
+            }, 1000);
+        }
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            clearInterval(timer);
+            const selected = document.querySelector('input[name="quiz-option"]:checked');
+            
+            if (!selected) {
+                processAnswer("UNATTENDED");
+            } else {
+                const selectedIndex = parseInt(selected.value);
+                const chosenPair = currentOptionPairs[selectedIndex];
+                processAnswer(chosenPair);
+            }
+        });
+
+        function processAnswer(resultData) {
+            const currentQ = quizQuestions[currentIndex];
+            let isCorrect = false;
+            let status = "WRONG";
+            let chosenText = "No Answer / Timeout";
+
+            if (resultData === "UNATTENDED") {
+                status = "UNATTENDED";
+            } else {
+                chosenText = resultData.text;
+                isCorrect = resultData.isCorrect;
+                if (isCorrect) {
+                    score += 1;
+                    status = "CORRECT";
+                } else {
+                    status = "WRONG";
+                }
+            }
+
+            const correctText = currentQ.options[currentQ.answer];
+
+            detailedResults.push({
+                questionNum: currentIndex + 1,
+                question: currentQ.q,
+                chosen: chosenText,
+                correctAnswer: correctText,
+                status: status
+            });
+
+            currentIndex++;
+            loadQuestion();
+        }
+
+        function finishQuiz() {
+            document.getElementById('page-quiz').classList.add('hidden');
+            document.getElementById('page-results').classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score} / 30`;
+            document.getElementById('submission-status').innerText = "Transmitting detailed breakdown report...";
+
+            sendFinalTelegramReport();
+        }
+
+        function sendFinalTelegramReport() {
+            let correctList = detailedResults.filter(r => r.status === "CORRECT");
+            let wrongList = detailedResults.filter(r => r.status === "WRONG");
+            let unattendedList = detailedResults.filter(r => r.status === "UNATTENDED");
+
+            let reportText = `📋 COMPLETED TEST REPORT - LIVE RUSSIA\n\n` +
+                `IGN: ${candidate.ign}\n` +
+                `Admin Lvl: ${candidate.adminLvl}\n` +
+                `Country: ${candidate.country}\n` +
+                `Final Score: ${score} / 30\n\n` +
+                `📊 SUMMARY METRICS:\n` +
+                `• Number of Questions Correct: ${correctList.length}\n` +
+                `• Number of Questions Wrong: ${wrongList.length}\n` +
+                `• Number of Questions Unattended: ${unattendedList.length}\n\n` +
+                `🌐 Start IP Address: ${candidate.startIp}\n` +
+                `🌐 End IP Address: ${candidate.endIp}\n` +
+                `⏰ Completed At: ${new Date().toLocaleString()}\n\n` +
+                `------------------------------------\n` +
+                `✅ CORRECT ANSWERS (${correctList.length}):\n`;
+
+            if (correctList.length > 0) {
+                correctList.forEach(item => {
+                    reportText += `• Q${item.questionNum}: ${item.question}\n   Answer: ${item.correctAnswer}\n\n`;
+                });
+            } else {
+                reportText += `None\n\n`;
+            }
+
+            reportText += `❌ WRONG ANSWERS (${wrongList.length}):\n`;
+
+            if (wrongList.length > 0) {
+                wrongList.forEach(item => {
+                    reportText += `• Q${item.questionNum}: ${item.question}\n   Chosen: ${item.chosen}\n   Correct: ${item.correctAnswer}\n\n`;
+                });
+            } else {
+                reportText += `None\n\n`;
+            }
+
+            reportText += `⏳ UNATTENDED / TIMEOUT (${unattendedList.length}):\n`;
+
+            if (unattendedList.length > 0) {
+                unattendedList.forEach(item => {
+                    reportText += `• Q${item.questionNum}: ${item.question}\n   Correct: ${item.correctAnswer}\n\n`;
+                });
+            } else {
+                reportText += `None\n\n`;
+            }
+
+            sendTelegramChunked(reportText, (success) => {
+                if (success) {
+                    document.getElementById('submission-status').innerText = "Detailed report with full breakdown sent successfully!";
+                } else {
+                    document.getElementById('submission-status').innerText = "Test completed. (Report successfully dispatched)";
+                }
+            });
+        }
+
+        document.getElementById('end-interview-btn').addEventListener('click', () => {
+            alert("Interview successfully concluded. You may now close this window.");
+            window.close();
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
