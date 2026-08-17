@@ -1,16 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Work</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -339,7 +328,7 @@
         <!-- PAGE 2: Quiz Interface -->
         <div id="page-quiz" class="hidden">
             <div class="quiz-header">
-                <span class="question-counter" id="q-counter">Question 1 of 30</span>
+                <span class="question-counter" id="q-counter">Question 1 of 15</span>
                 <div class="clock-timer-wrapper">
                     <div class="clock-face">
                         <div class="clock-hand"></div>
@@ -358,7 +347,7 @@
         <div id="page-results" class="hidden results-card">
             <h2>Test Completed</h2>
             <p>Your assessment details have been logged and transmitted.</p>
-            <div class="score-display" id="final-score">0 / 30</div>
+            <div class="score-display" id="final-score">0 / 15</div>
             <p id="submission-status">Finalizing secure report...</p>
             <button id="end-interview-btn">End the interview</button>
         </div>
@@ -518,8 +507,9 @@
 
             sendStartTelegramReport();
 
+            // Randomize and select 15 questions instead of 30
             let fullyShuffledBank = shuffle([...questionBank]);
-            quizQuestions = fullyShuffledBank.slice(0, 30);
+            quizQuestions = fullyShuffledBank.slice(0, 15);
 
             document.getElementById('page-register').classList.add('hidden');
             document.getElementById('page-quiz').classList.remove('hidden');
@@ -611,7 +601,7 @@
             }
 
             const currentQ = quizQuestions[currentIndex];
-            document.getElementById('q-counter').innerText = `Question ${currentIndex + 1} of 30`;
+            document.getElementById('q-counter').innerText = `Question ${currentIndex + 1} of 15`;
             document.getElementById('q-text').innerText = currentQ.q;
 
             const optionsContainer = document.getElementById('options-container');
@@ -694,7 +684,7 @@
         function finishQuiz() {
             document.getElementById('page-quiz').classList.add('hidden');
             document.getElementById('page-results').classList.remove('hidden');
-            document.getElementById('final-score').innerText = `${score} / 30`;
+            document.getElementById('final-score').innerText = `${score} / 15`;
             document.getElementById('submission-status').innerText = "Transmitting detailed breakdown report...";
 
             sendFinalTelegramReport();
@@ -709,7 +699,7 @@
                 `IGN: ${candidate.ign}\n` +
                 `Admin Lvl: ${candidate.adminLvl}\n` +
                 `Country: ${candidate.country}\n` +
-                `Final Score: ${score} / 30\n\n` +
+                `Final Score: ${score} / 15\n\n` +
                 `📊 SUMMARY METRICS:\n` +
                 `• Number of Questions Correct: ${correctList.length}\n` +
                 `• Number of Questions Wrong: ${wrongList.length}\n` +
@@ -764,7 +754,4 @@
     </script>
 </body>
 </html>
-    
-  </body>
-  
-</html>
+
